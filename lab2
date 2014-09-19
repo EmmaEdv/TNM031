@@ -1,0 +1,119 @@
+//Write an implementation of the RSA algorithm in java.
+//Your program must have the following functionalities. It must be able to generate public and private keys.
+//encrypt a plain text message given one key. decrypt the ciphertext message given the other key.
+
+import java.lang.Math;	//For rand 
+import java.lang.Object;	//For rand 
+import java.math.BigInteger;
+import java.util.Random;
+
+public class lab1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/* Generate public and private keys. */
+		
+		// n = modulus
+		// p, q = Bob's random large primes.
+		// e = Bob's encryption exponent
+		
+
+		BigInteger p, q, e;
+		// We assume that p and q are primes.
+		
+		
+		do{
+			p = getPrime();
+			q = getPrime();
+			e = getGCD(p,q);			
+			
+		}while((getGCD(p,q)) == null);
+		
+
+		// n = pq
+		BigInteger n = p.multiply(q); 
+		
+			
+		// Bob sends n & e to Alice
+		
+		
+
+		
+		// m = Alice messages
+		String m = "";
+		
+		int msgLength = m.length(); // some value
+		BigInteger mLength = new BigInteger(String.valueOf(msgLength));
+		
+		int comparison = mLength.compareTo(n); 
+		//returns -1 if less than 
+		//returns 1 if larger than
+		if(comparison == 1){
+			//Divide into blocks smaller or equal to n
+			//Divide m by n
+			
+			BigInteger div = mLength.divide(n);
+			BigInteger[] msgs;
+			
+			long myInteger = 1;
+			BigInteger bi = BigInteger.valueOf(myInteger);
+			
+			msgs = new BigInteger[div.add(bi)];	//Store messages in array
+			
+			
+		}
+		// Alice sends m 
+		// if m > n --> break message into blocks so 
+		// m < n (remember!! )
+		
+		/* Encrypt a plain text message given one key. */
+		
+		/* 5. Alice enctypts */
+		// Alice computes c = m^e * (mod(n))
+		// And sends to Bob
+		
+		
+		
+		/* Decrypt the ciphertext message given the other key. */
+		
+		
+		// Bob knows p and q --> can compute (p-1)(q-1)
+		// d = decryption
+		
+		// de = 1 * mod( (p-1)(q-1) )
+		
+		//  m = c^d * mod(n)
+	}
+	//GCD = Greatest Common Deviser (största gemensam nämnare)
+	//gcd(e, (p-1)(q-1)) = 1
+	//e = this  enl. gcd
+	// (p-1)(q-1) = abs(val) enl gcd
+	private static BigInteger getGCD(BigInteger p, BigInteger q) {
+		long myInteger = 1;
+		BigInteger bi = BigInteger.valueOf(myInteger);
+		// (p-1)(q-1)
+		BigInteger val = (p.subtract(bi)).multiply(q.subtract(bi));
+		
+		BigInteger e = null;
+		if (e.gcd(val) == bi){
+			// If we find gcd --> send n & e to alice
+			return e;
+		}
+		
+		return null;
+	}
+
+	private static BigInteger getPrime() {
+		int bitLength = 100;
+		Random rnd = new Random();
+		
+		BigInteger n = BigInteger.probablePrime(bitLength, rnd);
+		
+		return n;
+	}
+
+}
