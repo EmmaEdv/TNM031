@@ -26,6 +26,7 @@ public class lab1
 	*/
 	private static BigInteger getGCD(BigInteger p, BigInteger q) {
 
+        // (p-1)(q-1)
 		BigInteger val = (p.subtract(bi)).multiply(q.subtract(bi));
 
 		BigInteger e = null;
@@ -77,11 +78,6 @@ public class lab1
 
 
 		String m = ""; // m = Alice messages
-
-		//OBS: Verbo byter ut:
-		//int msgLength = m.length(); // some value
-		//BigInteger mLength = new BigInteger(String.valueOf(msgLength));
-		//OBS: mot(from conversion.txt)
 		//Convert a string into a BigInteger
 		BigInteger mLength = New BigInteger(m.getBytes());
 
@@ -129,20 +125,23 @@ public class lab1
 
             // (p-1)(q-1)
             BigInteger val = (p.subtract(bi)).multiply(q.subtract(bi));
-            BigInteger d = (bi.mod(val)).divide(e)
+            BigInteger d = (bi.mod(val)).divide(e);
 
             //  m = c^d * mod(n)
 
             //To obtain the original message, Bob computes
             //c^d = (m^e)^d = m^(1+k(theta)(n) = .... /mod (n)
-            BigInteger m_de = (c.pow(d)).mod(n);
+            BigInteger m_decr = (c.pow(d)).mod(n);
 
 
 
             System.out.println("Message: " + m);
             System.out.println("Encrypted message: " + c);
-            System.out.println("Decrypted message: " + m_de);
+            System.out.println("Decrypted message: " + m_decr);
 
+		}
+		else{
+            System.out.println("Multiple message blocks");
 		}
 	}
 
