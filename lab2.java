@@ -16,9 +16,9 @@ import java.math.*;
 
 
 
-public class lab1
-    long myInteger = 1;
-    BigInteger bi = BigInteger.valueOf(myInteger);
+public class Lab1{
+    static long myInteger = 1;
+    static BigInteger bi = BigInteger.valueOf(myInteger);
 
 	/*
 	* Method to get the GCD
@@ -79,7 +79,7 @@ public class lab1
 
 		String m = ""; // m = Alice messages
 		//Convert a string into a BigInteger
-		BigInteger mLength = New BigInteger(m.getBytes());
+		BigInteger mLength = new BigInteger(m.getBytes());
 
 		int comparison = mLength.compareTo(n);
 
@@ -87,7 +87,7 @@ public class lab1
 
 		//returns -1 if smaller
 		//returns 1 if larger
-		if(comparison == 1){
+		/*if(comparison == 1){
 			//Divide into blocks smaller or equal to n
 
             multMsgs = true;
@@ -96,7 +96,7 @@ public class lab1
 			BigInteger[] msgs;
 
 			msgs = new BigInteger[div.add(bi)];	//Store messages in array
-		}
+		}*/
 
 		//OBS: om vi har en array av meddelanden -> gå igenom alla och enkrypta?
 
@@ -112,7 +112,9 @@ public class lab1
 
             /* Alice enctypts m */
             // Alice computes c = m^e * (mod(n))
-            BigInteger c = (m.pow(e)).mod(n);
+			//Convert e to int
+			int eInt = e.intValue();
+            BigInteger c = (mLength.pow(eInt)).mod(n);
             // And sends c to Bob
 
             /* Decrypt the ciphertext message given the other key. */
@@ -144,6 +146,4 @@ public class lab1
             System.out.println("Multiple message blocks");
 		}
 	}
-
-
 }
