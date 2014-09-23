@@ -10,140 +10,66 @@
 
 import java.lang.Math;	//For rand
 import java.lang.Object;	//For rand
+import java.util.Arrays;
 import java.math.BigInteger;
 import java.util.Random;
 import java.math.*;
 
 
 
-public class Lab1{
+public class lab1{
     static long myInteger = 1;
     static BigInteger bi = BigInteger.valueOf(myInteger);
-
-	/*
-	* Method to get the GCD
-	* GCD = Greatest Common Deviser
-	*/
-	private static BigInteger getGCD(BigInteger p, BigInteger q) {
-
-        // (p-1)(q-1)
-		BigInteger val = (p.subtract(bi)).multiply(q.subtract(bi));
-
-		BigInteger e = null;
-		if (e.gcd(val) == bi){
-			// If we find gcd --> send n & e to alice
-			return e;
-		}
-
-		return null;
-	}
 
     /*
     * Method to get a random big prime number
     */
 	private static BigInteger getPrime() {
-		int bitLength = 100;
+		int bitLength = 1024;
 		Random rnd = new Random();
 
 		BigInteger n = BigInteger.probablePrime(bitLength, rnd);
 
 		return n;
 	}
+	
 	public static void main(String[] args) {
-
 		/* Generate public and private keys. */
-
-		// n = modulus
-		// p, q = Bob's random large primes.
-		// e = Bob's encryption exponent
-
+		// p, q = random large primes.
 		BigInteger p, q, e;
+		
         //Convert int 1 to bigInteger
         long myInteger = 1;
         BigInteger bi = BigInteger.valueOf(myInteger);
 
-
-		// We assume that p and q are primes.
-		do{
-			p = getPrime();
-			q = getPrime();
-			e = getGCD(p,q);
-
-		}while((getGCD(p,q)) == null);
-
-
+        p = getPrime();
+		q = getPrime();
+		e = getPrime(); // e = encryption exponent
+		//System.out.println("p: " + p);
+		//System.out.println("q: " + q);
+		//System.out.println("e: " + e);
+		
 		BigInteger n = p.multiply(q);   // n = pq
 
-		// Bob sends n & e to Alice --> n & e public
-
-
-		String m = ""; // m = Alice messages
-		//Convert a string into a BigInteger
+		String m = "TND031 - Network programming and securitylllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklllllllllllllllllll"; // m = messages
 		BigInteger mLength = new BigInteger(m.getBytes());
 
-		int comparison = mLength.compareTo(n);
+        /* Encrypt a plain text message given one key. */
+        BigInteger c = mLength.modPow(e,n);
 
-		Boolean multMsgs = false;
+        /* Decrypt the ciphertext message given the other key. */
+        BigInteger val = (p.subtract(bi)).multiply(q.subtract(bi));
+        BigInteger d = e.modInverse(val);
+        //System.out.println("d: " + d);
 
-		//returns -1 if smaller
-		//returns 1 if larger
-		/*if(comparison == 1){
-			//Divide into blocks smaller or equal to n
+        BigInteger m_decr = c.modPow(d, n);
+        //System.out.println("m_decr: " + m_decr);
+        
+        String mesg = new String(m_decr.toByteArray());
 
-            multMsgs = true;
-			//Divide m by n
-			BigInteger div = mLength.divide(n);
-			BigInteger[] msgs;
-
-			msgs = new BigInteger[div.add(bi)];	//Store messages in array
-		}*/
-
-		//OBS: om vi har en array av meddelanden -> gå igenom alla och enkrypta?
-
-		if(!multMsgs)   //Om vi endast har ett meddelande
-        {
-
-
-            // Alice sends m ( vart undrar verbo????)
-            // m < n (remember!! )
-
-            /* Encrypt a plain text message given one key. */
-
-
-            /* Alice enctypts m */
-            // Alice computes c = m^e * (mod(n))
-			//Convert e to int
-			int eInt = e.intValue();
-            BigInteger c = (mLength.pow(eInt)).mod(n);
-            // And sends c to Bob
-
-            /* Decrypt the ciphertext message given the other key. */
-
-            // Bob knows p and q --> can compute (p-1)(q-1) and can therefore
-            // find the decryption exponent d with
-            // d = decryption expnent
-
-            // d*e = 1 * mod( (p-1)(q-1) )
-
-            // (p-1)(q-1)
-            BigInteger val = (p.subtract(bi)).multiply(q.subtract(bi));
-            BigInteger d = (bi.mod(val)).divide(e);
-
-            //  m = c^d * mod(n)
-
-            //To obtain the original message, Bob computes
-            //c^d = (m^e)^d = m^(1+k(theta)(n) = .... /mod (n)
-            BigInteger m_decr = (c.pow(d)).mod(n);
-
-
-
-            System.out.println("Message: " + m);
-            System.out.println("Encrypted message: " + c);
-            System.out.println("Decrypted message: " + m_decr);
-
-		}
-		else{
-            System.out.println("Multiple message blocks");
-		}
+        System.out.println("Message: " + m);
+        System.out.println("Encrypted message: " + c);
+        System.out.println("Decrypted message: " + mesg);
+	
 	}
 }
