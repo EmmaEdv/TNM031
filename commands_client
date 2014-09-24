@@ -1,0 +1,157 @@
+
+C:\Users\verbo911\workspace\lab3\src>"c:\Program Files\Java\jdk1.6.0_26\bin\java
+.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+>>>> Sending the numbers 1.2 3.4 5.6 to SecureAdditionServer
+The result is 10.2
+
+C:\Users\verbo911\workspace\lab3\src>keytool
+'keytool' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\verbo911\workspace\lab3\src>cd SSLsocket
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+>>>> Sending the numbers 1.2 3.4 5.6 to SecureAdditionServer
+The result is 10.2
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+>>>> Sending the numbers 1.2 3.4 5.6 to SecureAdditionServer
+The result is 10.2
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+>>>> Sending the numbers poop to SecureAdditionServer
+Sorry, your list contains an invalid number
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+>>>> Sending the numbers 1.2 3.4 5.6 to SecureAdditionServer
+java.net.SocketException: Socket is closed
+java.net.SocketException: Socket is closed
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.checkEOF(SSLSocketImpl.jav
+a:1284)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+65)
+        at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+        at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+        at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+        at java.io.InputStreamReader.read(InputStreamReader.java:167)
+        at java.io.BufferedReader.fill(BufferedReader.java:136)
+        at java.io.BufferedReader.readLine(BufferedReader.java:299)
+        at java.io.BufferedReader.readLine(BufferedReader.java:362)
+        at SecureAdditionClient.run(SecureAdditionClient.java:71)
+        at SecureAdditionClient.main(SecureAdditionClient.java:94)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+>>>> Sending the file hej.txt to SecureAdditionServer
+java.net.SocketException: Socket is closed
+java.net.SocketException: Socket is closed
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.checkEOF(SSLSocketImpl.jav
+a:1284)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+65)
+        at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+        at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+        at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+        at java.io.InputStreamReader.read(InputStreamReader.java:167)
+        at java.io.BufferedReader.fill(BufferedReader.java:136)
+        at java.io.BufferedReader.readLine(BufferedReader.java:299)
+        at java.io.BufferedReader.readLine(BufferedReader.java:362)
+        at SecureAdditionClient.run(SecureAdditionClient.java:71)
+        at SecureAdditionClient.main(SecureAdditionClient.java:94)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+java.net.SocketException: Connection reset
+java.net.SocketException: Connection reset
+        at java.net.SocketInputStream.read(SocketInputStream.java:168)
+        at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:2
+93)
+        at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.j
+ava:798)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.performInitialHandshake(SS
+LSocketImpl.java:1138)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketIm
+pl.java:753)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+75)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+50)
+        at SecureAdditionClient.run(SecureAdditionClient.java:75)
+        at SecureAdditionClient.main(SecureAdditionClient.java:107)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+java.net.SocketException: Software caused connection abort: recv failed
+java.net.SocketException: Software caused connection abort: recv failed
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:129)
+        at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:2
+93)
+        at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.j
+ava:798)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.performInitialHandshake(SS
+LSocketImpl.java:1138)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketIm
+pl.java:753)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+75)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+50)
+        at SecureAdditionClient.run(SecureAdditionClient.java:75)
+        at SecureAdditionClient.main(SecureAdditionClient.java:107)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+>>>> SSL/TLS handshake completed
+java.net.SocketException: Software caused connection abort: recv failed
+java.net.SocketException: Software caused connection abort: recv failed
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.read(SocketInputStream.java:129)
+        at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:2
+93)
+        at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.j
+ava:798)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.performInitialHandshake(SS
+LSocketImpl.java:1138)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketIm
+pl.java:753)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+75)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+50)
+        at SecureAdditionClient.run(SecureAdditionClient.java:75)
+        at SecureAdditionClient.main(SecureAdditionClient.java:107)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionClient
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>
