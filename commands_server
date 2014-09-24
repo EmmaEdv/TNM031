@@ -1,0 +1,201 @@
+
+C:\Users\verbo911\workspace\lab3\src>javac SecureAdditionClient.java
+'javac' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\verbo911\workspace\lab3\src>"c:\Program Files\Java\jdk1.6.0_26\bin\java
+c.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src>"c:\Program Files\Java\jdk1.6.0_26\bin\java
+c.exe" SecureAdditionServer.java
+
+C:\Users\verbo911\workspace\lab3\src>"c:\Program Files\Java\jdk1.6.0_26\bin\java
+.exe" SecureAdditionServer
+java.io.IOException: Invalid keystore format
+java.io.IOException: Invalid keystore format
+        at com.sun.crypto.provider.JceKeyStore.engineLoad(DashoA13*..)
+        at java.security.KeyStore.load(KeyStore.java:1185)
+        at SecureAdditionServer.run(SecureAdditionServer.java:38)
+        at SecureAdditionServer.main(SecureAdditionServer.java:97)
+
+C:\Users\verbo911\workspace\lab3\src>"c:\Program Files\Java\jdk1.6.0_26\bin\java
+.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src>keytool -genkey -keyalg RSA -alias LIUalias
+ -storetype JCEKS -keystore LIUkeystore.ks
+'keytool' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\verbo911\workspace\lab3\src>keytool
+'keytool' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\verbo911\workspace\lab3\src>cd SSLsocket
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionServer.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+SecureAdditionClient.java:70: cannot find symbol
+symbol  : variable numbers
+location: class SecureAdditionClient
+                        socketOut.println( numbers );
+                                           ^
+1 error
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionServer.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+java.net.SocketException: Connection reset
+java.net.SocketException: Connection reset
+        at java.net.SocketInputStream.read(SocketInputStream.java:168)
+        at com.sun.net.ssl.internal.ssl.InputRecord.readFully(InputRecord.java:2
+93)
+        at com.sun.net.ssl.internal.ssl.InputRecord.read(InputRecord.java:331)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.j
+ava:798)
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.readDataRecord(SSLSocketIm
+pl.java:755)
+        at com.sun.net.ssl.internal.ssl.AppInputStream.read(AppInputStream.java:
+75)
+        at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+        at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+        at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+        at java.io.InputStreamReader.read(InputStreamReader.java:167)
+        at java.io.BufferedReader.fill(BufferedReader.java:136)
+        at java.io.BufferedReader.readLine(BufferedReader.java:299)
+        at java.io.BufferedReader.readLine(BufferedReader.java:362)
+        at SecureAdditionServer.run(SecureAdditionServer.java:64)
+        at SecureAdditionServer.main(SecureAdditionServer.java:97)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionServer.java
+SecureAdditionServer.java:87: out is already defined in run()
+                        PrintWriter out = new PrintWriter( incoming.getOutputStr
+eam(), true );
+                                    ^
+SecureAdditionServer.java:98: cannot find symbol
+symbol  : method println(java.lang.String)
+location: class java.io.BufferedOutputStream
+                                        out.println( "The result is " + result )
+;
+                                           ^
+SecureAdditionServer.java:101: cannot find symbol
+symbol  : method println(java.lang.String)
+location: class java.io.BufferedOutputStream
+                                        out.println( "Sorry, your list contains
+an invalid number" );
+                                           ^
+3 errors
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionServer.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionClient.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+java.io.FileNotFoundException: bye.txt (The system cannot find the file specifie
+d)
+java.io.FileNotFoundException: bye.txt (The system cannot find the file specifie
+d)
+        at java.io.FileInputStream.open(Native Method)
+        at java.io.FileInputStream.<init>(FileInputStream.java:120)
+        at SecureAdditionServer.run(SecureAdditionServer.java:68)
+        at SecureAdditionServer.main(SecureAdditionServer.java:122)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+java.net.SocketException: Socket is closed
+java.net.SocketException: Socket is closed
+        at com.sun.net.ssl.internal.ssl.SSLSocketImpl.getInputStream(SSLSocketIm
+pl.java:1869)
+        at SecureAdditionServer.run(SecureAdditionServer.java:85)
+        at SecureAdditionServer.main(SecureAdditionServer.java:122)
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionServer.java
+SecureAdditionServer.java:36: 'try' without 'catch' or 'finally'
+                try {
+                ^
+SecureAdditionServer.java:116: illegal start of expression
+        public static void main( String[] args ) {
+        ^
+SecureAdditionServer.java:116: illegal start of expression
+        public static void main( String[] args ) {
+               ^
+SecureAdditionServer.java:116: ';' expected
+        public static void main( String[] args ) {
+                     ^
+SecureAdditionServer.java:116: '.class' expected
+        public static void main( String[] args ) {
+                                          ^
+SecureAdditionServer.java:116: ';' expected
+        public static void main( String[] args ) {
+                                              ^
+SecureAdditionServer.java:124: reached end of file while parsing
+}
+ ^
+7 errors
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\javac.exe" SecureAdditionServer.java
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>"c:\Program Files\Java\jdk1.6.0_2
+6\bin\java.exe" SecureAdditionServer
+
+>>>> SecureAdditionServer: active
+
+C:\Users\verbo911\workspace\lab3\src\SSLsocket>
