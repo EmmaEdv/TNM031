@@ -1,3 +1,5 @@
+package SSLsocket;
+
 // A client-side class that uses a secure TCP/IP socket
 
 import java.io.*;
@@ -14,7 +16,12 @@ public class SecureAdditionClient {
 	static final String TRUSTSTORE = "jpattruststore.ks";
 	static final String STOREPASSWD = "changeit";
 	static final String ALIASPASSWD = "changeit";
+	
+
+	 public final static String FILE_TO_RECEIVE = "downloaded-file.txt";	//File to be received/downloaded
   
+	 public final static int FILE_SIZE = 6022386; // file size temporary hard coded
+     											// should bigger than the file to be downloaded
 	
 	// Constructor @param host Internet address of the host where the server is located
 	// @param port Port number on the host where the server is listening
@@ -40,11 +47,71 @@ public class SecureAdditionClient {
 			
 			SSLContext sslContext = SSLContext.getInstance( "TLS" );
 			sslContext.init( kmf.getKeyManagers(), tmf.getTrustManagers(), null );
-			SSLSocketFactory sslFact = sslContext.getSocketFactory();      	
+			SSLSocketFactory sslFact = sslContext.getSocketFactory();    
+			
+			//Secure Socket for client, with server as host
 			SSLSocket client =  (SSLSocket)sslFact.createSocket(host, port);
+			
+			//Encryption (lab2)
 			client.setEnabledCipherSuites( client.getSupportedCipherSuites() );
 			System.out.println("\n>>>> SSL/TLS handshake completed");
+			
+			//Set nr of bytes to read
+			int bytesRead;
+			
+			//Nr of bytes that is currently read
+			int current = 0;
+			
+			//Output stream for writing data to a file
+			FileOutputStream fos = null;
+			
+			//Store data temporarily while sending file
+			BufferedOutputStream bos = null;
 
+			//Array with bytes (where we store everything)
+			byte [] mybytearray = new byte [FILE_SIZE];
+			
+			//Store input stream for client socket in is
+			//getinputstream: returns an input stream for this socket (client)
+			InputStream is = client.getInputStream();
+			
+			//Writing file FILE_TO_RECEIVE to the outputstream fos
+			fos = new FileOutputStream(FILE_TO_RECEIVE);
+			
+			// Buffer fos - store in bos temporarily
+			bos = new BufferedOutputStream(fos);
+			
+			//Read number of bytes from is to mybytearray, starting at 0
+			bytesRead = is.read(mybytearray, 0, mybytearray.length);
+			
+			//Set current to bytesRead
+			current = bytesRead;
+			
+			do{
+				//Read from inputstream is to mybytesarray.
+				//Start at current and read to last position minus current (OBS: kolla sedan)
+				bytesRead = is.read(mybytearray, current, (mybytearray.length-current));
+				
+				//bytesRead is bigger than 0 --> add bytesRead to current
+				//If it contains something (bytesRead is not zero), then add to current
+				if(bytesRead >= 0) 
+					current += bytesRead;
+			} while(bytesRead > -1);	//Do while there is still data to read (OBS: testa sedan när det fungerar)
+			
+			//Write to bos from mybytearray starting from position 0
+			bos.write(mybytearray, 0, current);
+			//Flushes this output stream and forces any buffered output bytes to be written out. (print everything in os)
+			bos.flush();
+			System.out.println("File " + FILE_TO_RECEIVE + " downloaded (" + current + " bytes read)");
+			
+			
+			//Close all the streams and sockets
+			fos.close();
+			bos.close();
+			//Close client socket
+			client.close();
+		
+	
 			
 			//BufferedReader socketIn;
 			//socketIn = new BufferedReader( new InputStreamReader( client.getInputStream() ) );
@@ -53,7 +120,9 @@ public class SecureAdditionClient {
 			
 			/* Send file from client to server */
 			
-			String file = "hej.txt";
+			
+			// Old
+			/*String file = "hej.txt";
 			FileOutputStream fouts = null;
 			BufferedOutputStream bouts = null;
 			
@@ -77,9 +146,10 @@ public class SecureAdditionClient {
 			}
 			socketIn.close();
 			fouts.close();
-			bouts.close();
+			bouts.close();*/
 			
-			System.out.println( ">>>> Sending the file " + file + " to SecureAdditionServer" );
+			//System.out.println( ">>>> Sending the file " + file + " to SecureAdditionServer" );
+			
 			//socketOut.println( file );
 			//System.out.println( socketIn.readLine() );
 
