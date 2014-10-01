@@ -181,4 +181,14 @@ public class SecureAdditionClient {
 			uhx.printStackTrace();
 		}
 	}
+	
+	public static void upload(){
+		
+	}
+	public static void download(){
+		
+	}
+	public static void delete(){
+		
+	}
 }
