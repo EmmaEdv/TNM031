@@ -7,7 +7,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,7 +24,6 @@ import javax.net.ssl.SSLContext;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.InputStream;
-import java.io.Console;
 public class MainActivity extends Activity {
 	
 	public ProgressDialog loadingdialog;
@@ -40,7 +38,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				//showToast("Button 1 Clicked");
-				buttonAction("https://www.liu.se/");
+				buttonAction("https://www.liu.se/", 0);
 			}
 		});
 
@@ -49,8 +47,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				//showToast("Button 2 Clicked");
-				buttonAction("https://tal-front.itn.liu.se/");
-                //setUpConnection("https://tal-front.itn.liu.se/");
+				buttonAction("https://tal-front.itn.liu.se/", 0);
 			}
 		});
 		
@@ -59,8 +56,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				//showToast("Button 3 Clicked");
-				buttonAction("https://tal-front.itn.liu.se:4008/");
-                //setUpConnection("https://tal-front.itn.liu.se:4008/");
+				buttonAction("https://tal-front.itn.liu.se:4008/", 1);
 			}
 		});
 		
@@ -69,37 +65,38 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				//showToast("Button 4 Clicked");
-				buttonAction("https://tal-front.itn.liu.se:4018/");
-                //setUpConnection("https://tal-front.itn.liu.se:4018/");
+				buttonAction("https://tal-front.itn.liu.se:4018/", 1);
 			}
 		});
 	}
 
 	
 	// Called when the user clicks button
-	public void buttonAction(final String s_url){
+	public void buttonAction(final String s_url, final int btnNr){
 		loadingdialog = ProgressDialog.show(MainActivity.this, "","Loading...",true);
 
 		Thread thread = new Thread(new Runnable(){
 			@Override
 			public void run() {
 				try {
-                    //ESTABLISH HTTPS CONNECTION
-                    HttpClient client = new DefaultHttpClient();
-                    //HttpResponse executes a request using the default context
-                    HttpResponse response = client.execute(new HttpGet(s_url));
+                    if(btnNr == 1) {
+                        //Check with the certificate
+                        setUpConnection(s_url);
+                    }
+                    else {
+                        //Skapa Http-connection
+                        HttpClient client = new DefaultHttpClient();
+                        //HttpResponse utför en förfrågan att använda default context
+                        HttpResponse response = client.execute(new HttpGet(s_url));
 
-                    //Get status from website
-                    StatusLine sl = response.getStatusLine();
+                        //Erhåll status från websidan
+                        StatusLine sl = response.getStatusLine();
 
-                    //Check with the certificate
-                    setUpConnection(s_url);
-					
-					// Create Alert window with HTTPS status
-					showAlert(s_url, "HTTP Status: " + sl.getStatusCode());
-					
+                        //Visa en alertruta med Http-status
+                        showAlert(s_url, "HTTP Status: " + sl.getStatusCode());
+                    }
 				} catch (Exception e) {
-					// Create Alert window with possible errors
+					//Visa en alertruta med errormeddelande
 					showAlert(s_url, "ERROR: " + e.getMessage());
 					e.printStackTrace();
 				}
@@ -111,7 +108,7 @@ public class MainActivity extends Activity {
 		
 	}
 
-    public HttpsURLConnection setUpConnection(String urlString){
+    public void setUpConnection(String urlString){
         try {
             //Skapa truststore med vårt bouncy castle-certifikat
             KeyStore ts = KeyStore.getInstance("BKS");
@@ -136,18 +133,13 @@ public class MainActivity extends Activity {
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setSSLSocketFactory(context.getSocketFactory());
 
-            //En liten alertbox som meddelar användaren Responskoden :)
-            showAlert("", "Response code: " + urlConnection.getResponseCode());
-
-            //En liten alertbox som ger användaren ett responsmeddelande:)
-            showAlert("", "Response message: " + urlConnection.getResponseMessage());
-
-            return urlConnection;
+            //En liten alertbox som meddelar användaren responskoden samt responsmeddelande :)
+            showAlert("Response", "Response code: " + urlConnection.getResponseCode() +
+                      "\nResponse message: " + urlConnection.getResponseMessage());
         }
         catch (Exception ex) {
             showAlert(urlString, "Error: " + ex.getMessage());
             ex.printStackTrace();
-            return null;
         }
     }
 		
@@ -181,8 +173,5 @@ public class MainActivity extends Activity {
 	    		alertDialog.show();
 	        }
 		});
-		
 	}
-
-
 }
